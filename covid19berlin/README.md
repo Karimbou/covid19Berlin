@@ -1,6 +1,6 @@
 # covid19berlin
 
-A new Flutter project.
+This Project will daily show covid-19 cases in the Berlin.  
 
 ## Getting Started
 

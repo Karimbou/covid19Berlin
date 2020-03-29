@@ -22,15 +22,24 @@ class MyApp extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
-                    ),
+                  ),
+                ),
+                Text(
+                  'Fallzahlen Infizierte in Berlin',
+                  style: TextStyle(color: Colors.grey[500],
+                  ),
                 ),
               ],
             ),
-            ),
+          ),
+          Icon(Icons.star,
+          color: Colors.purpleAccent[500],
+          ),
+          Text('Infizierte gesamt'),
         ],
       ),
     );
-    
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(

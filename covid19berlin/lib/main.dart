@@ -39,6 +39,40 @@ class MyApp extends StatelessWidget {
         ],
       ),
     );
+    
+    Widget tableSection = Container(
+  padding: const EdgeInsets.all(32),
+  child: Table(
+    border: TableBorder.all(
+      color: Colors.black26, width: 1, style: BorderStyle.none),
+      children: [
+      TableRow(children: [
+        TableCell(child: Center(child: Text('Fall'))),
+        TableCell(child: Center(child: Text('Zahlen'),)),
+      ]),
+      TableRow(children: [
+        TableCell(child: Center(child: Text('Date 1'),)),
+        TableCell(child: Center(child: Text('Date 1.b'),)),
+      ]),
+      TableRow(children: [
+        TableCell(child: Center(child: Text('Date 2'),)),
+        TableCell(child: Center(child: Text('Date 2.b'),)),
+      ]),
+      TableRow(children: [
+        TableCell(child: Center(child: Text('Date 3'),)),
+        TableCell(child: Center(child: Text('Date 3.b'),)),
+      ]),
+      TableRow(children: [
+        TableCell(child: Center(child: Text('Date 4'),)),
+        TableCell(child: Center(child: Text('Date 4.b'),)),
+      ]),
+    TableRow(children: [
+        TableCell(child: Center(child: Text('Date 5'),)),
+        TableCell(child: Center(child: Text('Date 5.b'),)),
+      ]),
+  ],
+  ),
+);
 
     return MaterialApp(
       title: 'Flutter Demo',

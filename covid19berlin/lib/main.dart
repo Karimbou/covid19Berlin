@@ -1,111 +1,164 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map_arcgis/flutter_map_arcgis.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong/latlong.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+
+
+
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+ @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+    Widget titleSection = Container(
+      padding: const EdgeInsets.all(8),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children:[
+                Container(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    'Covid-19 / Berlin',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                ),
+                Text(
+                  'Fallzahlen Infizierte in Berlin',
+                  style: TextStyle(color: Colors.grey[500],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Icon(Icons.star,
+          color: Colors.purpleAccent[500],
+          ),
+          Text('Infizierte gesamt'),
+        ],
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
-  }
-}
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+    Widget tableSection = Container(
+    child: Table(
+      border: TableBorder.all(
+        color: Colors.black26, width: 1, style: BorderStyle.none),
+        children: [
+        TableRow(children: [
+          TableCell(child: Center(child: Text('Fall'))),
+          TableCell(child: Center(child: Text('Zahlen'),)),
+      ]),
+      TableRow(children: [
+        TableCell(child: Center(child: Text('Date 1'),)),
+        TableCell(child: Center(child: Text('Date 1.b'),)),
+      ]),
+      TableRow(children: [
+        TableCell(child: Center(child: Text('Date 2'),)),
+        TableCell(child: Center(child: Text('Date 2.b'),)),
+      ]),
+      TableRow(children: [
+        TableCell(child: Center(child: Text('Date 3'),)),
+        TableCell(child: Center(child: Text('Date 3.b'),)),
+      ]),
+      TableRow(children: [
+        TableCell(child: Center(child: Text('Date 4'),)),
+        TableCell(child: Center(child: Text('Date 4.b'),)),
+      ]),
+    TableRow(children: [
+        TableCell(child: Center(child: Text('Date 5'),)),
+        TableCell(child: Center(child: Text('Date 5.b'),)),
+      ]),
+  ],
+  ),
+);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+Widget mapSection = Container(
+padding: const EdgeInsets.all(8),
+child: Column(
+        children: [
+              Container(
+                child: FlutterMap(
+                  options: MapOptions(
+                    center: LatLng(52.520008, 13.404954),
+                    zoom: 9.0,
+                    plugins: [EsriPlugin()],
+                  ),
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+                  layers: [
+                    TileLayerOptions(
+                      urlTemplate:
+                      'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
+                      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+                      tileProvider: CachedNetworkTileProvider(),
+                    ),
+                    FeatureLayerOptions(
+                      url: "https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0",
+                      geometryType:"polygon",
+                      onTap: (attributes, LatLng location) {
+                        print(attributes);
+                      },
+                      render: (dynamic attributes){
+                        // You can render by attribute
+                        return PolygonOptions(
+                            borderColor: Colors.blueAccent,
+                            color: Colors.black12,
+                            borderStrokeWidth: 2,
+                        );
+                      },
+                    ),
 
-  final String title;
+                    FeatureLayerOptions(
+                      url: "https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/Krankenhaus_hospital/FeatureServer/0",
+                      geometryType:"point",
+                      render:(dynamic attributes){
+                        // You can render by attribute
+                        return Marker(
+                          width: 30.0,
+                          height: 30.0,
+                          builder: (ctx) => Icon(Icons.pin_drop, color: Colors.black38),
+                        );
+                      },
+                      onTap: (attributes, LatLng location) {
+                        print(attributes);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+);
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
+    return MaterialApp(
+      title: 'Covid19Berlin',
+      home: Scaffold(
+        appBar: AppBar(title: Text('covid19Berlin')),
+        body: ListView(
+          children: [
+            titleSection,
+            tableSection,
+            mapSection,
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

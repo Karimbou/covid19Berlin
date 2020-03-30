@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/plugin_api.dart';
 import 'package:flutter_map_arcgis/flutter_map_arcgis.dart';
 import 'package:latlong/latlong.dart';
+import 'package:responsive_container/responsive_container.dart';
 
 void main() => runApp(MyApp());
 
@@ -139,8 +140,9 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildMapSection() {
-    return Container(
-      height: 400,
+    return ResponsiveContainer(
+      heightPercent: 80.0,
+      widthPercent: 100.0,
       padding: const EdgeInsets.all(8),
       child: FlutterMap(
         options: MapOptions(

@@ -29,6 +29,7 @@ dependencies:
   flutter_map_marker_cluster: any
   user_location: any
   http: any
+  responsive_container: any
 
 dev_dependencies:
   flutter_test:

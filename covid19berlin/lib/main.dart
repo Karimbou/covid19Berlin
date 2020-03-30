@@ -175,8 +175,6 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-<<<<<<< HEAD
-=======
 
 class HomePage extends StatelessWidget {
   @override
@@ -212,5 +210,4 @@ class HomePage extends StatelessWidget {
         ),
     );
   }
->>>>>>> Testing
 }

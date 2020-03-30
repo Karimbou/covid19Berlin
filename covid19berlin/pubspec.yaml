@@ -30,6 +30,7 @@ dependencies:
   user_location: any
   http: any
   responsive_container: any
+  url_launcher: any
 
 dev_dependencies:
   flutter_test:

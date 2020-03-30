@@ -3,37 +3,20 @@ import 'package:flutter_map/plugin_api.dart';
 import 'package:flutter_map_arcgis/flutter_map_arcgis.dart';
 import 'package:latlong/latlong.dart';
 import 'package:responsive_container/responsive_container.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: HomePage(),
     );
   }
 }
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('covid19Berlin')),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            _buildTitleSection(),
-            _buildTableSection(),
-            _buildMapSection(),
-          ],
-        ),
-      ),
-    );
-  }
 
   Widget _buildTitleSection() {
     return Container(
@@ -190,6 +173,41 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('covid19Berlin')),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _buildTitleSection(),
+            _buildTableSection(),
+            _buildMapSection(),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (_) => new AlertDialog(
+              title: new Text('Hotline'),
+              content: new Text('Rufen Sie an falls Sie glauben sich angesteckt zu haben'),
+              actions: <Widget>[
+                FlatButton(onPressed: () => launch('tel://03090282828'),
+                child: new Text('Anrufen')),
+              ],
+            )
+          );
+        },
+        label: Text('Hotline'),
+        icon: Icon(Icons.phone),
+        backgroundColor: Colors.purple,
+        ),
     );
   }
 }

@@ -3,6 +3,7 @@
  ## The App shows the daily cases of COVID-19 Infection in Berlin's districts. It shows hospitals. It has a Button that let the user immidiatly call Berlin's official Hotline.    
  
 The App was built using Google's Mobile SDK [Flutter](https://www.fluter.dev).
+
 As I am not a programmer but "just" an Digitalization Manager and Projectmanager with some Webdesign skills I used the awesome work of some talented Developer who developed awesome Flutter Plugins. 
 
 I used John Pyron's [Flutter_Map](https://github.com/johnpryan/flutter_map) for a lightweighted Map.

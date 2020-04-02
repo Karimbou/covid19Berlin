@@ -164,7 +164,7 @@ class MyApp extends StatelessWidget {
               return Marker(
                 width: 30.0,
                 height: 30.0,
-                builder: (ctx) => Icon(Icons.pin_drop, color: Colors.black38),
+                builder: (ctx) => Icon(Icons.local_hospital, color: Colors.lightBlueAccent),
               );
             },
             onTap: (attributes, LatLng location) {

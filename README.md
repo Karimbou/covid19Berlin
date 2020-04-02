@@ -13,8 +13,8 @@ Unfortunatly the plugin is in a very early development stage so I think I can't 
 All the other plugins I used are: 
 
 Mike Mitter's [LatLong](https://github.com/MikeMitterer/dart-latlong).
-Jacob Araujo's[Responsive Container(https://github.com/jacobaraujo7/responsive_container)].
-Flutter's [Url Launcher(https://github.com/flutter/plugins)]
+Jacob Araujo's[Responsive Container](https://github.com/jacobaraujo7/responsive_container).
+Flutter's [Url Launcher](https://github.com/flutter/plugins).
 
 
 I am learning much these days - but am sure I will not easily transformate to a (skilled) developer. But the COVID-Crisis needs quick help from those who can help. If you are a developer and want to participate in this project please send me a Note. I would be very happy if you could help out. 

@@ -8,8 +8,10 @@ As I am not a programmer but "just" an Digitalization Manager and Projectmanager
 
 I used John Pyron's [Flutter_Map](https://github.com/johnpryan/flutter_map) for a lightweighted Map.
 
-I also used Munk Altai's [Flutter_Map_Arcgis](https://github.com/munkh-altai/flutter_map_arcgis) which draws the polygon's from Esri's Robert-Koch-Institut [NPGEO Corona Hub](https://npgeo-corona-npgeo-de.hub.arcgis.com/) to the map. 
-Unfortunatly the plugin is in a very early development stage so I think I can't readout more ArcGis-Data from the API's featureset than the Polygones and Points I used. So perhaps I have to give a GeoJson Plugin a try which is in a higher developement stage. 
+I also used Munkh Altai's [Flutter_Map_Arcgis](https://github.com/munkh-altai/flutter_map_arcgis) which draws the polygon's from Esri's Robert-Koch-Institut [NPGEO Corona Hub](https://npgeo-corona-npgeo-de.hub.arcgis.com/) to the map. 
+Unfortunatly the plugin is in a very early development stage so I think I can't readout more ArcGis-Data from the API's featureset than the Polygones and Points I used. @munkh-altai Am I right? 
+
+So perhaps I have to give a GeoJson Plugin a try which is in a higher developement stage. 
 
 All the other plugins I used are: 
 

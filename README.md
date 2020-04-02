@@ -1,6 +1,6 @@
 # covid19Berlin
  
- ## The App will show the daily cases of COVID-19 Infection in Berlin's districts. It already shows hospitals and has a Button that let the user immidiatly call Berlin's official Hotline.    
+### The App will show the daily cases of COVID-19 Infection in Berlin's districts. It already shows hospitals and has a Button that let the user immidiatly call Berlin's official Hotline.    
  
 The App was built using Google's Mobile SDK [Flutter](https://www.fluter.dev).
 

@@ -13,3 +13,11 @@ class ServerException implements Exception{
   ServerException();
   String toString() => message;
 }
+
+class ServerErrorException implements Exception{
+  String message;
+  ServerErrorException(this.message);
+  String toString() => message;
+}
+
+const kTimeoutDuration = Duration(seconds: 25);

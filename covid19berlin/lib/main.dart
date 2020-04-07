@@ -130,12 +130,12 @@ class MyApp extends StatelessWidget {
       child: FlutterMap(
         options: MapOptions(
           center: LatLng(52.520008, 13.404954),
-          zoom: 9.0,
+          zoom: 12.0,
           plugins: [EsriPlugin()],
         ),
         layers: [
           TileLayerOptions(
-            urlTemplate: 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
+            urlTemplate: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
             subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
             tileProvider: CachedNetworkTileProvider(),
           ),

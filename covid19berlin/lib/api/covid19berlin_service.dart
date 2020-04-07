@@ -2,8 +2,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
-class TimeoutExceptions implements Exception{
-  final String message = 'Server timeout';
+class TimeoutException implements Exception{
+  final String message = 'Server Timeout';
   TimeoutException();
+  String toString() => message;
+}
+
+class ServerException implements Exception{
+  final String message = 'Server is busy';
+  ServerException();
   String toString() => message;
 }
